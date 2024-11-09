@@ -1,15 +1,174 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+/* 基本的なスタイル */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+/* コンテナを中央寄せ */
+.container {
+  text-align: center;
+  padding: 50px;
+  position: relative;  /* 子要素を絶対配置にするために相対位置指定 */
+}
+
+/* Flixioタイトルのスタイル */
+.flixio-title {
+  font-size: 14em;
+  color: #00bfff; /* 水色 */
+  margin-bottom: 20px;
+}
+
+/* ログインボタンを右上に配置 */
+.login-button {
+  position: absolute;
+  top: 50px;
+  right: 60px;
+}
+
+/* 通用するボタンのスタイル */
+.button {
+  padding: 15px 30px;
+  font-size: 1.2em;
+  text-decoration: none;
+  color: white;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.button:hover {
+  background-color: #008b8b;  /* ホバー時の背景色 */
+  color: white; /* ホバー時の文字色 */
+  border-color: #006400; /* ホバー時の枠線の色 */
+}
+
+/* 新規登録ボタン */
+.register-btn {
+  background-color: #28a745; /* 初期背景色 */
+  border-radius: 5px;  
+  position: relative;
+  top: 30px; 
+}
+
+.register-btn:hover {
+  background-color: #218838;
+}
+
+/* ログインボタン */
+.login-btn {
+  background-color: #007bff; /* 初期背景色 */
+  border-radius: 5px;  
+}
+
+.login-btn:hover {
+  background-color: #0056b3;
+}
+
+/* フォームを中央寄せ */
+.form-container {
+  width: 50%;  /* フォームの幅を設定 */
+  margin: 50px auto;  /* 上に50pxの余白を追加してフォームを少し下に */
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* フォーム内の入力項目 */
+.form-container p {
+  margin: 15px 0;
+}
+
+/* サブミットボタンのスタイル */
+.form-container input[type="submit"] {
+  padding: 10px 20px;
+  font-size: 1.2em;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.form-container input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* リンク部分のスタイル */
+.form-container .links {
+  text-align: center; /* リンクを中央に配置 */
+  margin-top: 20px;
+}
+
+.form-container .links a {
+  margin: 0 15px; /* リンク間の間隔 */
+  font-size: 1.1em;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.form-container .links a:hover {
+  text-decoration: underline;
+}
+
+/* users-containerのスタイル */
+.users-container {
+  width: 80%; /* 横幅を設定 */
+  margin: 20px auto; /* 中央寄せ */
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 各ユーザーのスタイル */
+.user {
+  margin-bottom: 10px;
+}
+
+/* 削除リンクのスタイル */
+.delete-link {
+  color: #d9534f; /* 赤色 */
+  font-size: 1.1em;
+  text-decoration: none;
+}
+
+.delete-link:hover {
+  text-decoration: underline;
+  color: #c9302c; /* ホバー時の赤色 */
+}
+
+/* リンク部分のスタイル */
+.links {
+  text-align: center; /* リンクを中央に配置 */
+  margin-top: 20px;
+}
+
+.links .button {
+  padding: 10px 20px;
+  font-size: 1.2em;
+  color: white;
+  text-decoration: none;
+  margin: 10px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* 新規追加ボタン */
+.register-btn {
+  background-color: #28a745; /* 初期背景色 */
+}
+
+.register-btn:hover {
+  background-color: #218838;
+  color: white;
+}
+
+/* ログインボタン */
+.login-btn {
+  background-color: #007bff; /* 初期背景色 */
+}
+
+.login-btn:hover {
+  background-color: #0056b3;
+  color: white;
+}

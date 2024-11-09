@@ -1,15 +1,18 @@
-<%= form_with url: '/top/login', method: :post, local: true do |f| %>
+<div class="form-container">
+  <%= form_with url: '/top/login', method: :post, local: true do |f| %>
     <p>
-        <%= f.label :uid, 'ユーザーID' %>
-        <%= f.text_field :uid %>
+      <%= f.label :uid, 'ユーザーID' %>
+      <%= f.text_field :uid %>
     </p>
     <p>
-        <%= f.label :pass, 'パスワード' %>
-        <%= f.password_field :pass %>
+      <%= f.label :pass, 'パスワード' %>
+      <%= f.password_field :pass %>
     </p>
     <%= f.submit 'ログイン' %>
-<% end %>
+  <% end %>
 
-
-<p><%= link_to 'ユーザー登録', new_user_path %></p>
-<p><%= link_to 'ユーザ一覧', users_path %></p>
+  <div class="links">
+    <p><%= link_to 'ユーザー登録', new_user_path %></p>
+    <p><%= link_to 'ユーザ一覧', users_path %></p>
+  </div>
+</div>

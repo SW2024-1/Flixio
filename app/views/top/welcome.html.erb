@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flixio</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+</head>
+<body>
+  <div class="container">
+    <h1 class="flixio-title">Flixio</h1>
+    <p>ここではいろいろなドラマ、アニメ、バラエティ、ニュースを視聴することができます</p>
+
+    <div class="login-button">
+      <%= link_to "ログイン", top_main_path, class: "button login-btn" %>
+    </div>
+
+    <div class="register-button">
+      <%= link_to "新規ユーザー登録", new_user_path, class: "button register-btn" %>
+    </div>
+  </div>
+</body>
+</html>
