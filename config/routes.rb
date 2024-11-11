@@ -6,4 +6,5 @@ Rails.application.routes.draw do
    get 'top/logout', to: 'top#logout', as: 'top_logout'
    resources :users
    resources :products, only: [:index]
+   get 'get_image/:id', to: 'images#get_image'
 end

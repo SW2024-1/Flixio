@@ -1,4 +1,16 @@
 <h1>ここが見れていればOK</h1>
 
-<h2>商品一覧になる予定</h2>
+<h2>商品一覧</h2>
+
+<% @products.each do |e| %>
+    <div class="product">
+      <p>
+        <%= image_tag product_image_path(e) %><br>
+        <%= e.name %>
+      </p>
+    </div>
+  <% end %>
+
+
+
 <%= link_to "ログアウト", top_logout_path %>
