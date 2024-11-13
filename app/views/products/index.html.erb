@@ -3,14 +3,13 @@
 <h2>商品一覧</h2>
 
 <% @products.each do |e| %>
-    <div class="product">
-      <p>
-        <%= image_tag product_image_path(e) %><br>
-        <%= e.name %>
-      </p>
-    </div>
-  <% end %>
+  <p>
+    <%= video_tag product_path(e), controls: true %><br>
+    <%= e.name %><%= e.price %>
+    <%= link_to '削除', product_path(e), data: { turbo_method: :delete } %>
+  </p>
+<% end %>
 
 
-
+<%= link_to "新規追加", new_product_path %>
 <%= link_to "ログアウト", top_logout_path %>

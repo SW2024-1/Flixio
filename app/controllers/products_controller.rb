@@ -13,17 +13,17 @@ class ProductsController < ApplicationController
     file = params[:product][:file].read
     p = Product.new(name: name, price: price, file: file)
     p.save
-    redirect_to root_path
+    redirect_to products_path
   end
   
   def destroy
     Product.find(params[:id]).destroy
-    redirect_to root_path
+    redirect_to products_path
   end
   
-  def get_image
-    image = Image.find(params[:id])
-    send_data image.file, disposition: :inline, type: 'image/png'
+  def get_video
+    @product = Product.find(params[:id])
+    send_data @product.file, disposition: :inline, type: 'video/mp4'
   end 
   
 end

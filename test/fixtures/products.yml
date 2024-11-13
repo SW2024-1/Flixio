@@ -2,8 +2,10 @@
 
 one:
   name: MyString
+  price: 1
   file: 
 
 two:
   name: MyString
+  price: 1
   file: 

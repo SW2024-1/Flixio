@@ -1,0 +1,15 @@
+<%= form_with model: @product do |f| %>
+  <p>
+    <%= f.label :name, '作品名' %>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :price, '値段' %>
+    <%= f.text_field :price %>
+  </p>
+  <p>
+    <%= f.label :file, 'ファイル' %>
+    <%= f.file_field :file %>
+  </p>
+  <%= f.submit '登録' %>
+<% end %>
