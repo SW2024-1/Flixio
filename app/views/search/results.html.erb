@@ -10,14 +10,17 @@
 
 <table class="table table-hover table-inverse">
   <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.name %></td>
-        <td><%= product.binary %></td>
-      </tr>
+      <div style="display: flex; ">
+          <% @products.each do |product| %>
+          <div style="margin-right: 0px; text-align: center;">
+              <%= video_tag product_path(product), controls: true, style: "max-width: 300px;" %>
+              <p><%= product.name %></p>
+          </div>
+      </div>
     <% end %>
   </tbody>
 </table>
+
 
 
 <div class="back-to-index">
