@@ -11,7 +11,7 @@
 <div style="display: flex; flex-wrap: wrap;">
   <% @products.each do |e| %>
     <div style="margin-right: 20px; text-align: center;">
-      <%= video_tag product_path(e), controls: true, style: "max-width: 400px;" %>
+      <%= video_tag product_video_path(e), controls: true, style: "max-width: 400px;" %>
       <p><%= e.name %><%= "￥#{e.price}" %></p>
       <%= link_to '削除', product_path(e), data: { turbo_method: :delete } %>
     </div>

@@ -8,6 +8,6 @@ Rails.application.routes.draw do
    resources :products
    get 'search', to: 'search#search'
    get 'search/results', to: 'search#results', as: 'search_results'
-   get 'get_video/:id', to: 'products#get_video', as: 'product_vide'
+   get 'get_video/:id', to: 'products#get_video', as: 'product_video'
 
 end
