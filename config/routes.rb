@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get "buyitems/new"
+  get "buyitems/create"
+  get "buyitems/destroy"
     resources :users
     root 'top#welcome'
     get 'top/main', to: 'top#main'
@@ -12,4 +15,6 @@ Rails.application.routes.draw do
     resources :products
     resources :listitems, only: [:new, :create, :destroy]
     resources :lists, only: [:show]
+    resources :buyitems, only: [:new, :create, :destroy]  # 新規作成と削除を扱う
+    get 'buys', to: 'buys#show', as: 'buys'
 end

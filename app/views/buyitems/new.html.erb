@@ -1,0 +1,13 @@
+<%= form_with model: @buyitem, url: buyitems_path do |f| %>
+  <p>
+    <%= f.label :name, '商品名' %>
+    <%= Product.find(params[:product_id]).name %>
+  </p>
+  <p>
+    <%= f.label :price, '価格' %>
+    <%= Product.find(params[:product_id]).price %>
+  </p>
+
+  <%= f.hidden_field :product_id, value: Product.find(params[:product_id]).id %>
+  <%= f.submit "購入リストに追加" %>
+<% end %>

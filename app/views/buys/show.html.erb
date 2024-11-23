@@ -1,0 +1,10 @@
+<h1>購入リスト</h1>
+
+<% @buyitems.each do |buyitem| %>
+  商品名: <%= Product.find(buyitem.product_id).name %>
+  価格: <%= Product.find(buyitem.product_id).price %>
+  <%= link_to '削除', buyitem_path(buyitem), data: { turbo_method: :delete } %>
+  <br>
+<% end %>
+
+<%= link_to "商品一覧に戻る", root_path %>
