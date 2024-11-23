@@ -1,0 +1,8 @@
+<% @listitems.each do |e| %>
+    商品名 : <%= Product.find(e.product_id).name %>
+    価格 : <%= Product.find(e.product_id).price %>
+    <%= link_to '削除', listitem_path(e), data: { turbo_method: :delete } %>
+    <br>
+<% end %>
+
+<%= link_to "商品一覧に戻る", root_path %>
