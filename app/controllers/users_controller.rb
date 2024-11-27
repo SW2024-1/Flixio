@@ -22,6 +22,10 @@ class UsersController < ApplicationController
   end
   
   def watch_history
-    @watch_histories = current_user.watch_histories.includes(:product).order(watched_at: :desc)
+    if current_user
+      @watch_histories = current_user.watch_histories.includes(:product).order(watched_at: :desc)
+    else
+      redirect_to users_path, alert: 'ログインしてください'
+    end
   end
 end
