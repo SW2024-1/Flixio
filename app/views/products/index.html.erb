@@ -11,30 +11,22 @@
 <div style="display: flex; flex-wrap: wrap;">
   <% @products.each do |e| %>
     <div style="margin-right: 20px; text-align: center;">
-<<<<<<< HEAD
-      <%= video_tag product_video_path(e), controls: true, style: "max-width: 400px;" %>
-      <p><%= e.name %><%= "￥#{e.price}" %></p>
-      <%= link_to '削除', product_path(e), data: { turbo_method: :delete } %>
-      <%= link_to 'リストに追加', new_listitem_path(product_id: e.id) %>
-      <%= link_to '購入', new_buyitem_path(product_id: e.id) %>
-=======
       <p>
         <%= video_tag product_video_path(e), controls: true, style: "max-width: 300px;" %><br>
         <%= link_to "視聴", watch_video_product_path(e) %><br>
         <%= e.name %>&nbsp;&nbsp;<%= "￥#{e.price}" %><br>
+        <%= link_to 'リストに追加', new_listitem_path(product_id: e.id) %><br>
+        <%= link_to '購入', new_buyitem_path(product_id: e.id) %><br>
         <%= link_to '削除', product_path(e), data: { turbo_method: :delete } %>
-        
->>>>>>> watchhistory
+      </p>
     </div>
   <% end %>
 </div>
 
 
-<<<<<<< HEAD
-=======
-<%= link_to "視聴履歴を見る", watch_history_user_path(current_user) %>
->>>>>>> watchhistory
-<%= link_to "新規追加", new_product_path %>
-<%= link_to "ログアウト", top_logout_path %>
-<%= link_to '再生リスト', list_path(current_list.id) %>
-<%= link_to '購入リスト', buys_path(current_list.id) %>
+
+<%= link_to "新規追加", new_product_path %><br>
+<%= link_to "ログアウト", top_logout_path %><br>
+<%= link_to "視聴履歴を見る", watch_history_user_path(current_user) %><br>
+<%= link_to '再生リスト', list_path(current_list.id) %><br>
+<%= link_to '購入リスト', buys_path(current_list.id) %><br>

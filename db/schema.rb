@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema[7.2].define(version: 2024_11_23_081258) do
   create_table "buyitems", force: :cascade do |t|
     t.integer "product_id", null: false
@@ -44,9 +43,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_23_081258) do
     t.datetime "updated_at", null: false
   end
 
-=======
-ActiveRecord::Schema[7.2].define(version: 2024_11_20_064255) do
->>>>>>> watchhistory
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.integer "price"
@@ -63,13 +59,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_20_064255) do
     t.string "password_digest"
   end
 
-<<<<<<< HEAD
-  add_foreign_key "buyitems", "lists"
-  add_foreign_key "buyitems", "products"
-  add_foreign_key "buys", "products"
-  add_foreign_key "buys", "users"
-  add_foreign_key "listitems", "products"
-=======
   create_table "watch_histories", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "product_id", null: false
@@ -81,7 +70,11 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_20_064255) do
     t.index ["user_id"], name: "index_watch_histories_on_user_id"
   end
 
+  add_foreign_key "buyitems", "lists"
+  add_foreign_key "buyitems", "products"
+  add_foreign_key "buys", "products"
+  add_foreign_key "buys", "users"
+  add_foreign_key "listitems", "products"
   add_foreign_key "watch_histories", "products"
   add_foreign_key "watch_histories", "users"
->>>>>>> watchhistory
 end
