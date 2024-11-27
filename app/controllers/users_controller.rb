@@ -20,4 +20,8 @@ class UsersController < ApplicationController
     User.find(params[:id]).destroy
     redirect_to users_path
   end
+  
+  def watch_history
+    @watch_histories = current_user.watch_histories.includes(:product).order(watched_at: :desc)
+  end
 end

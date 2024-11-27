@@ -11,14 +11,17 @@
 <div style="display: flex; flex-wrap: wrap;">
   <% @products.each do |e| %>
     <div style="margin-right: 20px; text-align: center;">
-      <%= video_tag product_video_path(e), controls: true, style: "max-width: 400px;" %>
-      <p><%= e.name %><%= "￥#{e.price}" %></p>
-      <%= link_to '削除', product_path(e), data: { turbo_method: :delete } %>
+      <p>
+        <%= video_tag product_video_path(e), controls: true, style: "max-width: 300px;" %><br>
+        <%= link_to "視聴", watch_video_product_path(e) %><br>
+        <%= e.name %>&nbsp;&nbsp;<%= "￥#{e.price}" %><br>
+        <%= link_to '削除', product_path(e), data: { turbo_method: :delete } %>
+        
     </div>
   <% end %>
 </div>
 
 
-
+<%= link_to "視聴履歴を見る", watch_history_user_path(current_user) %>
 <%= link_to "新規追加", new_product_path %>
 <%= link_to "ログアウト", top_logout_path %>

@@ -1,4 +1,7 @@
 class Product < ApplicationRecord
+    has_many :watch_histories
+    has_many :watching_users, through: :watch_histories, source: :user
+  
     def self.looks(search, word)
         if search == "perfect_match"
           Product.where("name LIKE?","#{word}")
