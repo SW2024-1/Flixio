@@ -1,4 +1,6 @@
 class Product < ApplicationRecord
+  has_one_attached :file     
+  has_one_attached :thumbnail
   def self.looks(search, word)
       if search == "perfect_match"
         Product.where("name LIKE?","#{word}")

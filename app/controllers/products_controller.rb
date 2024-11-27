@@ -2,18 +2,33 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all
   end
+  
+  def show
+    @product = Product.find(params[:id])
+  end
 
   def new
     @product = Product.new
   end
   
   def create
-    name = params[:product][:name]
-    price = params[:product][:price]
-    file = params[:product][:file].read
-    p = Product.new(name: name, price: price, file: file)
-    p.save
-    redirect_to products_path
+    # product_paramsでファイルを処理する
+    @product = Product.new(product_params)
+    
+    # ファイルがアップロードされた場合、ActiveStorageに添付
+    if params[:product][:file].present?
+      @product.file.attach(params[:product][:file])
+    end
+    
+    if params[:product][:thumbnail].present?
+      @product.thumbnail.attach(params[:product][:thumbnail])
+    end
+
+    if @product.save
+      redirect_to products_path
+    else
+      render :new
+    end
   end
   
   def destroy
@@ -25,5 +40,8 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     send_data @product.file, disposition: :inline, type: 'video/mp4'
   end 
-  
+  private
+  def product_params
+    params.require(:product).permit(:name, :price)
+  end
 end

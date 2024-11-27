@@ -1,0 +1,12 @@
+<h1><%= @product.name %></h1>
+
+<!-- 動画が存在する場合にのみ表示 -->
+<% if @product.file.attached? %>
+  <div>
+    <%= video_tag rails_blob_path(@product.file, disposition: "inline"), controls: true, style: "max-width: 400px;" %>
+  </div>
+<% else %>
+  <p>動画はありません。</p>
+<% end %>
+
+<%= link_to '商品一覧に戻る', products_path %>
