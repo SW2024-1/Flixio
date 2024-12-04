@@ -2,10 +2,6 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all
   end
-  
-  def show
-    @product = Product.find(params[:id])
-  end
 
   def new
     @product = Product.new
@@ -33,9 +29,9 @@ class ProductsController < ApplicationController
   
   def destroy
     product = Product.find(params[:id])
-    # まず関連する watch_histories を削除
-    #product.watch_histories.destroy_all
-    # product を削除
+    # ActiveStorageの関連を削除
+    product.active_storage_attachments.destroy_all if product.respond_to?(:active_storage_attachments)
+    # 商品を削除
     product.destroy
     redirect_to products_path
   end
