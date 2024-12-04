@@ -21,11 +21,5 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
   
-  def watch_history
-    if current_user
-      @watch_histories = current_user.watch_histories.includes(:product).order(watched_at: :desc)
-    else
-      redirect_to users_path, alert: 'ログインしてください'
-    end
-  end
+
 end

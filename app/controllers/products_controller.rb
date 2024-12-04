@@ -34,7 +34,7 @@ class ProductsController < ApplicationController
   def destroy
     product = Product.find(params[:id])
     # まず関連する watch_histories を削除
-    product.watch_histories.destroy_all
+    #product.watch_histories.destroy_all
     # product を削除
     product.destroy
     redirect_to products_path
@@ -50,12 +50,6 @@ class ProductsController < ApplicationController
     send_data @product.file, disposition: :inline, type: 'video/mp4'
   end 
   
-  def watch_video
-    @product = Product.find(params[:id])
-    WatchHistory.create(user: current_user, product: @product, watched_at: Time.now)
-    
-    redirect_to product_path(@product)  #product_video_path(@watch_history)
-  end
   
   private
   def product_params

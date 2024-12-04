@@ -21,11 +21,7 @@ Rails.application.routes.draw do
    resources :buyitems, only: [:new, :create, :destroy]  # 新規作成と削除を扱う
    get 'buys', to: 'buys#show', as: 'buys'
    
-   resources :users do
-   get 'watch_history', on: :member
-   end
-   
-   resources :products do
-   get 'watch_video', on: :member
-   end
+   resources :users
+   resources :products
+
 end
