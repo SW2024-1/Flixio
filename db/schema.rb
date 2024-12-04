@@ -39,15 +39,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_04_064053) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "buyitems", force: :cascade do |t|
-    t.integer "product_id", null: false
-    t.integer "list_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["list_id"], name: "index_buyitems_on_list_id"
-    t.index ["product_id"], name: "index_buyitems_on_product_id"
-  end
-
   create_table "buys", force: :cascade do |t|
     t.integer "product_id", null: false
     t.integer "user_id", null: false
@@ -94,22 +85,12 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_04_064053) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "buyitems", "lists"
-  add_foreign_key "buyitems", "products"
-  add_foreign_key "buys", "products"
-  add_foreign_key "buys", "users"
+  
   add_foreign_key "listitems", "products"
-  add_foreign_key "purchases", "products"
-  add_foreign_key "purchases", "users"
+
 end
