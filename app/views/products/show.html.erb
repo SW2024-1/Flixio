@@ -1,14 +1,5 @@
 <h1><%= @product.name %></h1>
-<<<<<<< HEAD
-<p>価格: <%= @product.price %></p>
-<%= video_tag product_video_path(@product), controls: true, style: "max-width: 200px;" %>
-<br><br>
 
-<%= link_to "視聴履歴に戻る", watch_history_user_path %><br>
-<%= link_to "一覧に戻る", products_path %>
-=======
-
-<!-- 動画が存在する場合にのみ表示 -->
 <% if @product.file.attached? %>
   <div>
     <%= video_tag rails_blob_path(@product.file, disposition: "inline"), controls: true, style: "max-width: 400px;" %>
@@ -17,5 +8,9 @@
   <p>動画はありません。</p>
 <% end %>
 
-<%= link_to '商品一覧に戻る', products_path %>
->>>>>>> thumbnail
+<p>価格: <%= @product.price %></p>
+<%= video_tag product_video_path(@product), controls: true, style: "max-width: 200px;" %>
+<br><br>
+
+<%= link_to "視聴履歴に戻る", watch_history_user_path %><br>
+<%= link_to "一覧に戻る", products_path %>
