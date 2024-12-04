@@ -15,6 +15,7 @@
       <% if e.thumbnail.attached? %>
         <%= link_to product_path(e) do %>
           <%= image_tag e.thumbnail, class: "thumbnail", style: "max-width: 200px;" %>
+          <%= link_to "視聴", watch_video_product_path(e) %>
         <% end %>
       <% else %>
         <%= image_tag 'hiyoko.png', style: "max-width: 200px;" %> <!-- デフォルトサムネイル -->

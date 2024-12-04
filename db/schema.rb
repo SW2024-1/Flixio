@@ -87,7 +87,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_27_065206) do
     t.string "password_digest"
   end
 
-<<<<<<< HEAD
   create_table "watch_histories", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "product_id", null: false
@@ -99,10 +98,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_27_065206) do
     t.index ["user_id"], name: "index_watch_histories_on_user_id"
   end
 
-=======
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
->>>>>>> thumbnail
   add_foreign_key "buyitems", "lists"
   add_foreign_key "buyitems", "products"
   add_foreign_key "buys", "products"
