@@ -79,6 +79,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_27_065206) do
     t.datetime "updated_at", null: false
   end
 
+
   create_table "users", force: :cascade do |t|
     t.string "uid"
     t.integer "password"
