@@ -79,14 +79,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_27_065206) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "purchases", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "product_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_purchases_on_product_id"
-    t.index ["user_id"], name: "index_purchases_on_user_id"
-  end
 
   create_table "users", force: :cascade do |t|
     t.string "uid"
@@ -110,6 +102,4 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_27_065206) do
   add_foreign_key "buys", "products"
   add_foreign_key "buys", "users"
   add_foreign_key "listitems", "products"
-  add_foreign_key "purchases", "products"
-  add_foreign_key "purchases", "users"
 end
