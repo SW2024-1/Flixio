@@ -1,8 +1,53 @@
-<% @listitems.each do |e| %>
-    商品名 : <%= Product.find(e.product_id).name %>
-    価格 : <%= Product.find(e.product_id).price %>
-    <%= link_to '削除', listitem_path(e), data: { turbo_method: :delete } %>
-    <br>
-<% end %>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flixio</title>
 
-<%= link_to "ホームに戻る", products_path %>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <!-- CSSファイルを読み込む -->
+  <%= stylesheet_link_tag 'style', media: 'all' %>
+</head>
+<body>
+  <!-- ヘッダー -->
+  <header>
+    <nav>
+      <h3 class="flixio-title">Flixio</h3>
+      <h2>あなたの再生リスト</h2> 
+    </nav>
+  </header>
+</div>
+</h2>
+
+<div class="container">
+  <div style="display: flex; flex-wrap: wrap;">
+    <% @listitems.each do |e| %>
+      <div style="margin-right: 10px; text-align: center;">
+        <% product = Product.find(e.product_id) %>
+        
+        <!-- サムネイル画像 -->
+        <% if product.thumbnail.attached? %>
+          <%= link_to product_path(product) do %>
+            <%= image_tag product.thumbnail, class: "thumbnail", style: "max-width: 200px;" %>
+          <% end %>
+        <% else %>
+          <%= image_tag 'hiyoko.png', style: "max-width: 200px;" %> <!-- デフォルトサムネイル -->
+        <% end %>
+        
+        <!-- 商品名 -->
+        <p><%= product.name %></p>
+        
+        <!-- 削除リンク -->
+        <%= link_to '削除', listitem_path(e), data: { turbo_method: :delete }, class: "delete-link" %>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- 一覧に戻るリンク -->
+  <div class="back-to-index">
+    <%= link_to "一覧に戻る", products_path, class: "button register-btn" %>
+  </div>
+</div>
