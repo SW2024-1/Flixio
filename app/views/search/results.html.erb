@@ -10,16 +10,23 @@
 
 <table class="table table-hover table-inverse">
   <tbody>
-      <div style="display: flex; ">
+      <div style="display: flex;">
           <% @products.each do |product| %>
           <div style="margin-right: 0px; text-align: center;">
-              <%= video_tag product_path(product), controls: true, style: "max-width: 300px;" %>
+              <% if product.thumbnail.attached? %>
+                <%= link_to product_path(product) do %>
+                  <%= image_tag product.thumbnail, class: "thumbnail", style: "max-width: 200px;" %>
+                <% end %>
+              <% else %>
+                <%= image_tag 'hiyoko.png', style: "max-width: 200px;" %> <!-- デフォルトサムネイル -->
+              <% end %>
               <p><%= product.name %></p>
           </div>
+          <% end %>
       </div>
-    <% end %>
   </tbody>
 </table>
+
 
 
 
