@@ -1,4 +1,17 @@
-<h1><%= @product.name %></h1>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= @product.name %></title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'style', media: 'all' %>
+</head>
+
+<body>
+  <!-- 商品情報 -->
+  <h1><%= @product.name %></h1>
 
 <!-- 動画が存在する場合にのみ表示 -->
 <% if @product.file.attached? %>
@@ -9,8 +22,8 @@
   <p>動画はありません。</p>
 <% end %>
 
-<p>価格: <%= @product.price %></p>
-
 <br><br>
 
 <%= link_to "ホームに戻る", products_path %>
+</body>
+</html>
