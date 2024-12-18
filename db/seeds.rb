@@ -1,5 +1,6 @@
 # db/seeds.rb
 
+=begin
 # サンプル動画1
 product1 = Product.create(
   name: "サンプル動画1",
@@ -33,3 +34,4 @@ product3.update(file: File.open(Rails.root.join("public/videos/ex1_kamo.mp4")).r
 # サムネイル画像を添付
 product3.thumbnail.attach(io: File.open(Rails.root.join("public/thumbnails/kaisou.png")), filename: "thumbnail2.png", content_type: "image/png")
 
+=end
