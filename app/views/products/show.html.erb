@@ -3,27 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= @product.name %></title>
+  <title>Flixio</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag 'style', media: 'all' %>
 </head>
-
 <body>
+  <!-- ヘッダー -->
+  <header>
+    <nav>
+      <h3 class="flixio-title">Flixio</h3>
+      <ul>
+        <!-- 検索フォーム -->
+        <li style="float: left;">
+          <%= form_with url: search_results_path, local: true, method: :get, style: "display: inline-block;" do |f| %>
+            <%= f.text_field :word, placeholder: "検索ワード", style: "padding: 5px;" %>
+            <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"], ["後方一致","backward_match"], ["部分一致","partial_match"]]), style: "padding: 5px;" %>
+            <%= f.submit "検索", class: "button", style: "padding: 5px 15px;" %>
+          <% end %>
+        </li>
+
+        <!-- 再生リストとログアウトボタン -->
+        <li style="float: right;">
+          <%= link_to '再生リスト', list_path(current_list.id) %>&nbsp;&nbsp;
+          <%= link_to 'ログアウト', top_logout_path %>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
   <!-- 商品情報 -->
-  <h1><%= @product.name %></h1>
+  <div class="product-details">
+    <h1><%= @product.name %></h1>
 
-<!-- 動画が存在する場合にのみ表示 -->
-<% if @product.file.attached? %>
-  <div>
-    <%= video_tag rails_blob_path(@product.file, disposition: "inline"), controls: true, style: "max-width: 200px;" %>
+    <!-- 動画が存在する場合にのみ表示 -->
+    <% if @product.file.attached? %>
+      <div>
+        <%= video_tag rails_blob_path(@product.file, disposition: "inline"), controls: true, style: "max-width: 100%;" %>
+      </div>
+    <% else %>
+      <p>動画はありません。</p>
+    <% end %>
+
+    <br><br>
+
+    <%= link_to "ホームに戻る", products_path, class: "back-link" %>
   </div>
-<% else %>
-  <p>動画はありません。</p>
-<% end %>
-
-<br><br>
-
-<%= link_to "ホームに戻る", products_path %>
+  
 </body>
 </html>
