@@ -37,8 +37,8 @@
     
     <%= form_with model: @list_item, url: listitems_path do |f| %>
       <p>
-        <%= f.label :name, '商品名' %><br>
-        <%= Product.find(params[:product_id]).name %>
+        <%= image_tag @product.thumbnail, class: "thumbnail", style: "max-width: 200px;" %><br>
+        <h3><%= Product.find(params[:product_id]).name %></h3>
       </p>
 
       <%= form_for :list_item, url: listitems_path do |f| %>

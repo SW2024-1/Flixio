@@ -2,7 +2,8 @@
   <% @users.each do |e| %>
     <div class="user">
       <p>
-        uid: <%= e.uid %>, password_digest: <%= e.password_digest %>
+        uid：<%= e.uid %><br>
+        password： <%= e.password_digest %>
         <%= link_to '削除', user_path(e), data: { turbo_method: :delete }, class: 'delete-link' %>
       </p>
     </div>
