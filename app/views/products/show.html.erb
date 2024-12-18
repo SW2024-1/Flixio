@@ -39,7 +39,7 @@
     <!-- 動画が存在する場合にのみ表示 -->
     <% if @product.file.attached? %>
       <div>
-        <%= video_tag rails_blob_path(@product.file, disposition: "inline"), controls: true, style: "max-width: 100%;" %>
+        <%= video_tag rails_blob_path(@product.file, disposition: "inline"), controls: true, style: "max-width: 400px; width: 100%;" %>
       </div>
     <% else %>
       <p>動画はありません。</p>
@@ -47,7 +47,7 @@
 
     <br><br>
 
-    <%= link_to "ホームに戻る", products_path, class: "back-link" %>
+    <%= link_to "ホームに戻る", products_path, class: "button register-btn" %>
   </div>
   
 </body>
