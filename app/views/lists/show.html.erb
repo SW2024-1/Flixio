@@ -23,25 +23,25 @@
 </h2>
 
 <div class="container">
-  <div style="display: flex; flex-wrap: wrap;">
+  <div class="product-container-wrapper">
     <% @listitems.each do |e| %>
-      <div style="margin-right: 10px; text-align: center;">
+      <div class="product-container">
         <% product = Product.find(e.product_id) %>
         
         <!-- サムネイル画像 -->
         <% if product.thumbnail.attached? %>
           <%= link_to product_path(product) do %>
-            <%= image_tag product.thumbnail, class: "thumbnail", style: "max-width: 200px;" %>
+            <%= image_tag product.thumbnail, class: "product-thumbnail" %>
           <% end %>
         <% else %>
-          <%= image_tag 'hiyoko.png', style: "max-width: 200px;" %> <!-- デフォルトサムネイル -->
+          <%= image_tag 'hiyoko.png', class: "product-thumbnail" %> <!-- デフォルトサムネイル -->
         <% end %>
         
         <!-- 商品名 -->
-        <p><%= product.name %></p>
+        <h3><%= product.name %></h3>
         
         <!-- 削除リンク -->
-        <%= link_to '削除', listitem_path(e), data: { turbo_method: :delete }, class: "delete-link" %>
+        <%= link_to '削除', listitem_path(e), data: { turbo_method: :delete }, class: "button register-btn" %>
       </div>
     <% end %>
   </div>
@@ -51,3 +51,4 @@
     <%= link_to "一覧に戻る", products_path, class: "button register-btn" %>
   </div>
 </div>
+
