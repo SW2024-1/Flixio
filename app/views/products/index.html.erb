@@ -13,7 +13,7 @@
   <!-- ヘッダー -->
   <header>
     <nav>
-      <h3 class="flixio-title">Flixio</h3>
+      <h3 class="flixio-title"><%= link_to 'Flixio', products_path, class: 'title-link' %></h3>
       <ul>
         <!-- 検索フォーム -->
         <li style="float: left;">
@@ -54,11 +54,6 @@
           </div>
         </div>
       <% end %>
-    </div>
-
-    <!-- 新規追加ボタン -->
-    <div class="product-links">
-      <%= link_to "新規追加", new_product_path, class: "button register-btn" %>
     </div>
   </div>
 </body>

@@ -1,15 +1,11 @@
 Rails.application.routes.draw do
+  # 管理者用のルーティング
   namespace :admin do
-    get "usersrails/generate"
-    get "usersrails/controller"
-    get "usersrails/admin/products"
+    root to: 'dashboard#index'  # 管理者ダッシュボード
+    resources :products
+    resources :users  # 管理者用のユーザー管理機能
   end
    
-   # 管理者用のルーティング
-   namespace :admin do
-      resources :products
-      resources :users  # 管理者用のユーザー管理機能
-   end
    # ユーザー用のルート
    root 'top#welcome'
    get 'top/main', to: 'top#main'

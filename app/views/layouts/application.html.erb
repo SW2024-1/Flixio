@@ -18,6 +18,13 @@
   </head>
 
   <body>
+    <div style="background-color: #333; padding: 3px 0;">
+    <nav class="kanri-title">
+      <% if current_user&.admin? %>
+        <%= link_to 'dashboard', admin_root_path, class: 'kanri-link' %>
+      <% end %>
+    </nav>
+    </div>
     <%= yield %>
   </body>
 </html>

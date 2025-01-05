@@ -1,12 +1,11 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_user
-  helper_method :current_list
+  helper_method :current_user, :current_list, :logged_in?
 
   private
 
   def current_user
     if session[:login_uid]
-      User.find_by(uid: session[:login_uid])
+      @current_user ||= User.find_by(uid: session[:login_uid])
     end
   end
   def current_list
@@ -26,5 +25,10 @@ class ApplicationController < ActionController::Base
       session[:list_id] = list.id # 新しい List の id をセッションに保存
     end
     return list
+  end
+  
+  # ログインしているかを確認するメソッド
+  def logged_in?
+    current_user.present?
   end
 end

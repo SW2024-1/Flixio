@@ -2,7 +2,7 @@
 header {
   background-color: #333;
   color: white;
-  padding: 10px 0;
+  padding: 0 0 10px 0;
 }
 
 header nav {
@@ -16,6 +16,33 @@ header .flixio-title {
   font-size: 1.8em;
   margin-left: 0;
 }
+
+header .flixio-title .title-link {
+  text-decoration: none; /* アンダーラインを消す */
+  color: inherit; /* 親要素の色を継承 */
+}
+
+header .flixio-title .title-link:hover {
+  text-decoration: none;
+  color: white; 
+}
+
+.kanri-title {
+  margin-top: 6px;
+  margin-left: 20px;
+}
+
+.kanri-title .kanri-link {
+  color: #00bfff; /* 水色 */
+  font-family: 'Poppins', sans-serif;
+  text-decoration: none;
+}
+
+.kanri-title .kanri-link:hover {
+  color: white;
+  text-decoration: none;
+}
+
 
 header ul {
   list-style-type: none;
