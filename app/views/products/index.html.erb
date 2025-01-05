@@ -45,7 +45,9 @@
                 <%= image_tag e.thumbnail, class: "product-thumbnail" %>
               <% end %>
             <% else %>
-              <%= image_tag 'hiyoko.png', class: "product-thumbnail" %> <!-- デフォルトサムネイル -->
+              <%= link_to product_path(e) do %>
+                <%= image_tag 'hiyoko.png', class: "product-thumbnail" %> <!-- デフォルトサムネイル -->
+              <% end %>
             <% end %>
           </div>
           <h3><%= e.name %></h3>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flixio</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'style', media: 'all' %>
+</head>
+
+<body>
+  <!-- ヘッダー -->
+  <header>
+    <nav>
+      <h3 class="flixio-title"><%= link_to 'Flixio', products_path, class: 'title-link' %></h3>
+      <ul>
+        <li style="display: flex; align-items: center;">
+          <h2 style="margin-right: 20px;">管理者ダッシュボード</h2>
+          <%= link_to 'ログアウト', top_logout_path %>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  
+  <div style="margin: 20px">
+
+  <%= form_with model: @product do |f| %>
+  <p>
+    <strong><%= f.label :name, '作品名：' %></strong>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <strong><%= f.label :thumbnail, 'サムネイル画像：' %></strong>
+    <%= f.file_field :thumbnail %>
+  </p>
+  <p>
+    <strong><%= f.label :file, '動画：' %></strong>
+    <%= f.file_field :file %>
+  </p>
+  <%= f.submit '登録' %>
+<% end %>
+

@@ -23,24 +23,32 @@
     </nav>
   </header>
   
-    
+  <div style="margin: 20px">
   <h2>商品管理</h2>
   <ul>
-    <% @products.each do |product| %>
-      <li><%= link_to product.name, admin_product_path(product) %></li>
+    <% @products.each do |pro| %>
+      <li>
+        <%= link_to pro.name, admin_product_path(pro) %>
+        <%= link_to '編集', edit_admin_product_path(pro), class: 'delete-link' %>
+        <%= link_to '削除', admin_product_path(pro), data: { turbo_method: :delete }, class: 'delete-link' %>
+
+      </li>
     <% end %>
     <br>
     <div class="product-links">
-      <%= link_to "新規追加", new_product_path %>
+      <%= link_to "新規追加", new_admin_product_path %>
     </div>
   </ul>
    
   <h2>ユーザー管理</h2>
   <ul>
     <% @users.each do |user| %>
-      <li><%= link_to user.uid, admin_user_path(user) %></li>
+      <li>
+        <%= link_to user.uid, admin_user_path(user) %>
+        <%= link_to '削除', admin_user_path(user), data: { turbo_method: :delete }, class: 'delete-link' %>
+      </li>
     <% end %>
   </ul>
-
+</div>
 </body>
 </html>

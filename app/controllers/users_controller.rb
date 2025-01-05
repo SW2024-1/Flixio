@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       password_confirmation: params[:user][:password_confirmation]
     )
     u.save
-    redirect_to users_path
+    redirect_to top_main_path
   end
   
   def destroy

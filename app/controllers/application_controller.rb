@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_user, :current_list, :logged_in?
+  helper_method :current_user, :current_list
 
   private
 
@@ -26,9 +26,10 @@ class ApplicationController < ActionController::Base
     end
     return list
   end
-  
-  # ログインしているかを確認するメソッド
-  def logged_in?
-    current_user.present?
+
+  def authenticate_admin!
+    unless current_user&.admin?
+      redirect_to root_path, alert: '管理者権限が必要です。'
+    end
   end
 end

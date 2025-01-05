@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
   # 管理者用のルーティング
   namespace :admin do
+    resources :products do
+      member do
+        delete :destroy
+        get :get_video
+      end
+    end
     root to: 'dashboard#index'  # 管理者ダッシュボード
-    resources :products
     resources :users  # 管理者用のユーザー管理機能
   end
    

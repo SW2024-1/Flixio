@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flixio</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'style', media: 'all' %>
+</head>
+
+<body>
+  <!-- ヘッダー -->
+  <header>
+    <nav>
+      <h3 class="flixio-title"><%= link_to 'Flixio', products_path, class: 'title-link' %></h3>
+      <ul>
+        <li style="display: flex; align-items: center;">
+          <h2 style="margin-right: 20px;">管理者ダッシュボード</h2>
+          <%= link_to 'ログアウト', top_logout_path %>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  
+  <div style="margin: 20px">
+    <p><strong>作品名：</strong> <%= @product.name %></p>
+    <p>
+      <strong>サムネイル：</strong><br>
+      <% if @product.thumbnail.attached? %>
+        <%= image_tag @product.thumbnail, class: "product-thumbnail" %>
+      <% else %>
+        <p>サムネイルはありません。</p>
+      <% end %>
+    </p>
+    <p>
+      <strong>動画：</strong><br>
+      <% if @product.file.attached? %>
+        <%= video_tag rails_blob_path(@product.file, disposition: "inline"), controls: true, style: "max-width: 400px; width: 100%;" %>
+      <% else %>
+        <p>動画はありません。</p>
+      <% end %>
+    </p>
+
+  <%= link_to '編集', edit_admin_product_path(@product), class: 'button' %>
+  <%= link_to '戻る', admin_root_path, class: 'button' %>
+  </div>
+</body>
+</html>
