@@ -14,4 +14,8 @@ class Product < ApplicationRecord
         Product.all
       end
   end
+  
+  #バリデーション
+  validates :name, presence: true  #空ではない
+  validates :name, length: {maximum: 50 } #50文字以下
 end
