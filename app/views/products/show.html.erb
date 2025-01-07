@@ -33,18 +33,16 @@
   </header>
 
   <!-- 商品情報 -->
-  <div class="product-details" div style="margin: 20px">
-    <h1><%= @product.name %></h1>
-
+  <div class="product-details" style="margin: 20px; text-align: center;">
     <!-- 動画が存在する場合にのみ表示 -->
     <% if @product.file.attached? %>
       <div>
-        <%= video_tag rails_blob_path(@product.file, disposition: "inline"), controls: true, style: "max-width: 400px; width: 100%;" %>
+        <%= video_tag rails_blob_path(@product.file, disposition: "inline"), controls: true, style: "max-width: 800px; width: 100%;" %>
       </div>
     <% else %>
       <p>動画はありません。</p>
     <% end %>
-
+    <h2><%= @product.name %></h2>
     <br><br>
 
     <%= link_to "ホームに戻る", products_path, class: "button register-btn" %>
