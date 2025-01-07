@@ -40,7 +40,10 @@
         <%= video_tag rails_blob_path(@product.file, disposition: "inline"), controls: true, style: "max-width: 800px; width: 100%;" %>
       </div>
     <% else %>
-      <p>動画はありません。</p>
+      <!-- デフォルトビデオ -->
+      <div>
+        <%= video_tag 'sora.mp4', controls: true, style: "max-width: 800px; width: 100%;" %>
+      </div>
     <% end %>
     <h2><%= @product.name %></h2>
     <br><br>
