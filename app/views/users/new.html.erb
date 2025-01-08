@@ -1,16 +1,35 @@
 <div class="form-container">
-  <%= form_with model: @user do |f| %>
+  <% if @user.errors.any? %>
+    <div class="error_messages">
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form_with model: @user, local: true do |f| %>
     <p>
       <%= f.label :uid, 'UID' %>
       <%= f.text_field :uid %>
+      <% if @user.errors[:uid].any? %>
+        <div class="error-message"><%= @user.errors[:uid].first %></div>
+      <% end %>
     </p>
     <p>
       <%= f.label :password, 'PASS' %>
       <%= f.password_field :password %>
+      <% if @user.errors[:password].any? %>
+        <div class="error-message"><%= @user.errors[:password].first %></div>
+      <% end %>
     </p>
     <p>
       <%= f.label :password_confirmation, 'PASS(確認)' %>
       <%= f.password_field :password_confirmation %>
+      <% if @user.errors[:password_confirmation].any? %>
+        <div class="error-message"><%= @user.errors[:password_confirmation].first %></div>
+      <% end %>
     </p>
     <%= f.submit '登録' %>
   <% end %>

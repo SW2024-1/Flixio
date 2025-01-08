@@ -8,12 +8,17 @@ class UsersController < ApplicationController
   end
   
   def create
-    u = User.new(uid: params[:user][:uid], 
+    @user = User.new(uid: params[:user][:uid], 
       password: params[:user][:password], 
       password_confirmation: params[:user][:password_confirmation]
     )
-    u.save
-    redirect_to top_main_path
+    if @user.save
+      # 保存成功時、トップページへリダイレクト
+      redirect_to top_main_path
+    else
+      # 保存失敗時、再度フォームを表示してエラーメッセージを表示
+      render :new
+    end
   end
   
   def destroy
