@@ -1,8 +1,8 @@
 class Product < ApplicationRecord
   has_one_attached :file
   has_one_attached :thumbnail
-  validates :search, presence: true, inclusion: { in: %w(name description category), message: "%{value} is not a valid search field" }
-  validates :word, presence: true, length: { minimum: 3, message: "must be at least 3 characters long" }
+  #validates :search, presence: true, inclusion: { in: %w(name description category), message: "%{value} is not a valid search field" }
+  #validates :word, presence: true, length: { minimum: 3, message: "must be at least 3 characters long" }
   def self.looks(search, word)
       if search == "perfect_match"
         Product.where("name LIKE?","#{word}")

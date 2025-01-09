@@ -1,7 +1,7 @@
-<!-- app/views/products/new.html.erb -->
 <%= form_with model: @product, local: true do |form| %>
   <% if @product.errors.any? %>
     <div class="error_messages">
+      <h3>エラーがあります。</h3>
       <ul>
         <% @product.errors.full_messages.each do |message| %>
           <li><%= message %></li>

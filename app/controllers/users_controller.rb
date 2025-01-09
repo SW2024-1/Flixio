@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       redirect_to top_main_path
     else
       # 保存失敗時、再度フォームを表示してエラーメッセージを表示
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
   

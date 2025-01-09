@@ -21,7 +21,7 @@ class Admin::ProductsController < ApplicationController
     if @product.save
       redirect_to admin_products_path, notice: '商品が作成されました'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
    
@@ -45,7 +45,7 @@ class Admin::ProductsController < ApplicationController
     if @product.update(product_params)
       redirect_to admin_product_path(@product), notice: '商品が更新されました'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
     
