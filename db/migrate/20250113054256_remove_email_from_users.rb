@@ -1,5 +1,8 @@
 class RemoveEmailFromUsers < ActiveRecord::Migration[7.2]
   def change
-    remove_column :users, :email, :string
+    # emailカラムが存在する場合のみ削除
+    if column_exists?(:users, :email)
+      remove_column :users, :email, :string
+    end
   end
 end
