@@ -29,4 +29,11 @@ test:
 # ensure the database is located in a persisted volume.
 production:
   <<: *default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  database: flixio_g51l
+  username: flixio_g51l_user
+  password: <%= ENV['MYSITE_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
   # database: path/to/persistent/storage/production.sqlite3
