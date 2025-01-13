@@ -4,11 +4,6 @@ class Admin::UsersController < ApplicationController
     @users = User.all
   end
 
-  def show
-    @user = User.find(params[:id])
-    @listitems = @user.list&.listitems || []
-  end
-
   def destroy
     @user = User.find(params[:id])
     @user.destroy

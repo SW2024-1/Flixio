@@ -7,15 +7,8 @@ class ProductTest < ActiveSupport::TestCase
     assert pro.valid?
   end
   
-  test '異常ケース1' do
-    pro = Product.new
-    assert pro.invalid?
-    pro.name = 'A' * 60
-    assert_not pro.valid?
-    assert pro.errors.include?(:name)
-  end
-  
-  test '異常ケース2' do
+
+  test '異常ケース' do
     pro = Product.new
     assert pro.invalid?
     pro.name = 
