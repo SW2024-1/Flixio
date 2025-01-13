@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   def index
     @products = Product.all
+    @users = current_user
   end
 
   def new
@@ -8,17 +9,10 @@ class ProductsController < ApplicationController
   end
   
   def create
-    # product_paramsでファイルを処理する
     @product = Product.new(product_params)
-    
     # ファイルがアップロードされた場合、ActiveStorageに添付
-    if params[:product][:file].present?
-      @product.file.attach(params[:product][:file])
-    end
-    
-    if params[:product][:thumbnail].present?
-      @product.thumbnail.attach(params[:product][:thumbnail])
-    end
+    @product.file.attach(params[:product][:file]) if params[:product][:file].present?
+    @product.thumbnail.attach(params[:product][:thumbnail]) if params[:product][:thumbnail].present?
 
     if @product.save
       redirect_to products_path

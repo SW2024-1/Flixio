@@ -24,6 +24,11 @@
   </header>
   
   <div style="margin: 20px">
+    
+    <% if flash[:notice] %>
+      <%= flash[:notice] %>
+    <% end %>
+    
     <p><strong>作品名：</strong> <%= @product.name %></p>
     <p>
       <strong>サムネイル：</strong><br>

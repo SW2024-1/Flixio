@@ -24,11 +24,16 @@
   </header>
   
   <div style="margin: 20px">
+    
+    <% if flash[:notice] %>
+      <%= flash[:notice] %>
+    <% end %>
+    
   <h2>商品管理</h2>
   <ul>
     <% @products.each do |pro| %>
       <li>
-        <%= link_to pro.name, admin_product_path(pro) %>
+        <%= link_to pro.name, admin_product_path(pro) %>&nbsp;&nbsp;&nbsp;
         <%= link_to '編集', edit_admin_product_path(pro), class: 'delete-link' %>
         <%= link_to '削除', admin_product_path(pro), data: { turbo_method: :delete }, class: 'delete-link' %>
 
@@ -44,7 +49,7 @@
   <ul>
     <% @users.each do |user| %>
       <li>
-        <%= link_to user.uid, admin_user_path(user) %>
+        <%= user.uid %>&nbsp;&nbsp;&nbsp;
         <%= link_to '削除', admin_user_path(user), data: { turbo_method: :delete }, class: 'delete-link' %>
       </li>
     <% end %>

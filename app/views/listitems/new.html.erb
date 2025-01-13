@@ -37,7 +37,11 @@
     
     <%= form_with model: @list_item, url: listitems_path do |f| %>
       <p>
-        <%= image_tag @product.thumbnail, class: "thumbnail", style: "max-width: 200px;" %><br>
+        <% if @product.thumbnail.attached? %>
+          <%= image_tag @product.thumbnail, class: "product-thumbnail" %>
+        <% else %>
+          <%= image_tag 'hiyoko.png', class: "product-thumbnail" %>
+        <% end %>
         <h3><%= Product.find(params[:product_id]).name %></h3>
       </p>
 

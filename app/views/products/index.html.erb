@@ -33,6 +33,20 @@
     </nav>
   </header>
 
+  <div style="margin-left: 20px">
+    <% if @users.uid.present? %>
+      <h3>ようこそ <%= @users.uid %> さん！</h3>
+    <% else %>
+      <h3>ようこそ 未設定 さん！</h3>
+    <% end %>
+    
+    <% if flash[:notice] %>
+      <%= flash[:notice] %>
+    <% elsif flash[:alert] %>
+      <%= flash[:alert] %>
+    <% end %>
+    
+  </div>
   <div class="container">
     <!-- 商品一覧 -->
     <div class="product-container-wrapper">

@@ -19,7 +19,7 @@ class Admin::ProductsController < ApplicationController
     @product.thumbnail.attach(params[:product][:thumbnail]) if params[:product][:thumbnail].present?
 
     if @product.save
-      redirect_to admin_products_path, notice: '商品が作成されました'
+      redirect_to admin_products_path, notice: "商品が作成されました"
     else
       render :new, status: :unprocessable_entity
     end
@@ -43,7 +43,8 @@ class Admin::ProductsController < ApplicationController
     @product.thumbnail.attach(thumbnail) if thumbnail.present?
     
     if @product.update(product_params)
-      redirect_to admin_product_path(@product), notice: '商品が更新されました'
+      flash[:notice] = "商品が更新されました"
+      redirect_to admin_product_path(@product)
     else
       render :edit, status: :unprocessable_entity
     end
@@ -56,7 +57,7 @@ class Admin::ProductsController < ApplicationController
     @product.thumbnail.purge if @product.thumbnail.attached?
 
     @product.destroy
-    redirect_to admin_products_path, notice: '商品が削除されました'
+    redirect_to admin_products_path, notice: "商品が削除されました"
   end
   
   def get_video

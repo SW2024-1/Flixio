@@ -22,6 +22,12 @@
 </div>
 </h2>
 
+  <div style="margin: 20px">
+    <% if flash[:list_des] %>
+      <%= flash[:list_des] %>
+    <% end %>
+  </div>
+
 <div class="container">
   <div class="product-container-wrapper">
     <% @listitems.each do |e| %>
