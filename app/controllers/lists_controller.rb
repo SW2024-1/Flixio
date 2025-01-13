@@ -2,12 +2,12 @@ class ListsController < ApplicationController
   def show
     @listitems = Listitem.where(list_id: current_list.id)
   end
+
   def create
-    l = Listitem.new(list_item_params.merge(list_id: current_list.id))
+    l = Listitem.new(list_item_params.merge(list_id: current_list.id, user_id: current_user.id))
     if l.save
       redirect_to products_path, notice: 'アイテムがリストに追加されました。'
     else
-      # バリデーションエラーがあった場合、エラーメッセージを表示して new アクションにリダイレクト
       flash[:alert] = 'アイテムの追加に失敗しました。'
       redirect_to new_listitem_path(product_id: l.product_id)
     end
