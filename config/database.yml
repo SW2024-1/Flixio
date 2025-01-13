@@ -30,8 +30,8 @@ test:
 production:
   <<: *default
   adapter: postgresql
-  encoding: unicode
   pool: 5
+  encoding: unicode
   database: flixio_g51l
   username: flixio_g51l_user
   password: <%= ENV['MYSITE_DATABASE_PASSWORD'] %>
