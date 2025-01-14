@@ -1,22 +1,23 @@
 databases:
-- name: flixio
-databaseName: flixio_ty0n
-user: flixio_ty0n_user
-plan: free
+  - name: Flixio
+    databaseName: flixio_ty0n
+    user: flixio_ty0n_user
+    plan: free
+
 services:
-- type: web
-name: flixio_g51l
-runtime: ruby
-plan: free
-buildCommand: "./bin/render-build.sh"
-# preDeployCommand: "bundle exec rails db:migrate" # preDeployCommand only available on paid instance types
-startCommand: "bundle exec rails server"
-envVars:
-- key: DATABASE_URL
-fromDatabase:
-name: flixio_g51l
-property: connectionString
-- key: RAILS_MASTER_KEY
-sync: false
-- key: WEB_CONCURRENCY
-value: 2 # sensible default
+  - type: web
+    name: Flixio
+    runtime: ruby
+    plan: free
+    buildCommand: "./bin/render-build.sh"
+    # preDeployCommand: "bundle exec rails db:migrate" # preDeployCommand only available on paid instance types
+    startCommand: "bundle exec rails server"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: Flixio
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: WEB_CONCURRENCY
+        value: 2 # sensible default
