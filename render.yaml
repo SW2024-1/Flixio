@@ -1,7 +1,7 @@
 databases:
-- name: Flixio
-databaseName: flixio_g51l
-user: flixio_g51l_user
+- name: flixio
+databaseName: flixio_ty0n
+user: flixio_ty0n_user
 plan: free
 services:
 - type: web

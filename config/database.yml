@@ -30,10 +30,10 @@ test:
 production:
   <<: *default
   adapter: postgresql
-  pool: 5
   encoding: unicode
-  database: flixio_g51l
-  username: flixio_g51l_user
+  pool: 5
+  database: flixio_ty0n
+  username: flixio_ty0n_user
   password: <%= ENV['MYSITE_DATABASE_PASSWORD'] %>
   url: <%= ENV['DATABASE_URL'] %>
   # database: path/to/persistent/storage/production.sqlite3
